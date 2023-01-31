@@ -1,3 +1,17 @@
+/* header font */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet');
+/* body font */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&display=swap" rel="stylesheet');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    html {
+        @apply font-sans
+    }
+    h1 {
+        @apply font-heading
+    }
+}

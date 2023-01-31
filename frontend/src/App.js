@@ -1,5 +1,6 @@
 import './styles.css';
 import React from 'react';
+import { useState } from 'react';
 import Item from './Item';
 
 function App() {
@@ -28,16 +29,23 @@ function App() {
     itemName: 'Chicken Muffin',
     batchQuantity: 22
   }
+
+  const lemonDrizzleCake = {
+    price: 20,
+    itemName: 'Lemon Drizzle Cake',
+    batchQuantity: 1
+  }
   
-  const items = [blueberryMuffin, raspberryMuffin, chickenMuffin]
+  const items = [blueberryMuffin, raspberryMuffin, chickenMuffin, lemonDrizzleCake]
 
   const itemsDisplay = items.map((food) => {
     return <Item food={food}></Item>
   })
 
   return (
-    <div class='flex'>
+    <div class='flex flex-wrap'>
       {itemsDisplay}
+
     </div>
   );
 }
