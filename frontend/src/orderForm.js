@@ -11,7 +11,7 @@ function OrderForm() {
           <div class="block p-6 rounded-lg shadow-lg bg-white max-w-md">
             <form>
               <div class="form-group mb-6">
-                <input type="text" class="form-control block
+                <input className="company name" type="text" class="form-control block
                   w-96
                   px-3
                   py-1.5
@@ -24,7 +24,7 @@ function OrderForm() {
                   transition
                   ease-in-out
                   m-0
-                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput7"
+                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" data-cy="company_name"
                   placeholder="Company Name"></input>
               </div>
               <div class="form-group mb-6">
@@ -42,7 +42,7 @@ function OrderForm() {
                   transition
                   ease-in-out
                   m-0
-                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput8"
+                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="order_summary"
                   placeholder="Order Summary"></input>
               </div>
               <div class="form-group mb-6">
@@ -59,7 +59,7 @@ function OrderForm() {
                   transition
                   ease-in-out
                   m-0
-                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput8"
+                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="needed_by_date"
                   placeholder="Date needed by"></input>
               </div>
               <div>
@@ -80,7 +80,8 @@ function OrderForm() {
                 active:bg-blue-800 active:shadow-lg
                 transition
                 duration-150
-                ease-in-out">Send</button>
+                ease-in-out"
+                id="submit" >Send</button>
               </div>
             </form>
           </div>
