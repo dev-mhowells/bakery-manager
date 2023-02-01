@@ -29,3 +29,7 @@ app.get("/api", (req, res) => {
 module.exports = app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
+
+// app.listen(PORT, () => {
+//   console.log(`Server listening on ${PORT}`);
+// });

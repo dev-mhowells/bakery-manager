@@ -25,23 +25,24 @@ const OrdersController = {
     }
   )},
   addBatch: async (req, res) => {
-    // const orderRef = '63da563fdd9375028be24ef8'
-    // const order = await Order.findById(orderRef)
 
-    // const batchOrder = new BatchOrder(req.body)
-    // batchOrder.save()
-    // // add the batchOrder to the order
-    // const filter = {_id: orderRef}
-    // const newOrders = [...order.orders, batchOrder]
-    // await Order.findOneAndUpdate(filter, {orders: newOrders})
+    try {
 
-    const orderRef = '63da563fdd9375028be24ef8';
-    const batchOrder = new BatchOrder(req.body);
-    batchOrder.save();
+      const orderRef = '63da563fdd9375028be24ef8';
+      const batchOrder = new BatchOrder(req.body);
+      batchOrder.save();
+  
+      await Order.findByIdAndUpdate(orderRef, { $push: { orders: batchOrder } });
+  
+      res.status(200).json({batchOrder: batchOrder})
 
-    await Order.findByIdAndUpdate(orderRef, { $push: { orders: batchOrder } });
+    } catch(error) {
 
-    res.status(200).json({batchOrder: batchOrder})
+      res.status(400).json({error: error.message})
+      
+    }
+
+
   }
 }
 

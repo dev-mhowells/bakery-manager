@@ -4,16 +4,22 @@ const request = require("supertest");
 const Item = require('../../models/item');
 
 describe('/items', () => {
-    // beforeAll( async () => {
-    //   });
+
+      let server
     
       beforeEach( async () => {
+
+        if (server) {
+          server.close();
+        }
+
+        server = app.listen(3001);
         await Item.deleteMany({});
       })
     
-      afterAll( async () => {
+      afterEach( async () => {
+        server.close();
         await Item.deleteMany({});
-
       })
 
       it('Gets items in a database', async () => {
