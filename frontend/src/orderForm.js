@@ -59,7 +59,7 @@ function OrderForm() {
                   transition
                   ease-in-out
                   m-0
-                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="needed_by_date"
+                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" data-cy="needed_by_date"
                   placeholder="Date needed by"></input>
               </div>
               <div>

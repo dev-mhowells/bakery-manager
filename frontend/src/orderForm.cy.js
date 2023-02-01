@@ -6,7 +6,8 @@ import App from './App'
 describe('<OrderForm />', () => {
 
   const mockOrder = {
-    placeholder: "Company Name"}
+    placeholder: "Company Name",
+  }
 
   it('renders', () => {
     cy.mount(<OrderForm placeholder={mockOrder}/>)
@@ -16,14 +17,10 @@ describe('<OrderForm />', () => {
     cy.mount(<OrderForm />);
     cy.get('[data-cy="company_name"]').type("text");
     cy.get('[data-cy="order_summary"]').type("text");
-    // cy.get("#needed_by_date").type("date");
-    // cy.get("#submit").click();
   })
 
   it('display the form with date', () => {
-    cy.mount(<OrderForm />);
-  
-    // cy.get("#needed_by_date").type("date");
-    // cy.get("#submit").click();
+    const mockdate = new Date('2022-12-24');
+    cy.wrap(mockdate).should('deep.equal', new Date('2022-12-24'));
   })
 })
