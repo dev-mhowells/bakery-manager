@@ -39,7 +39,7 @@ const tokenChecker = (req, res, next) => {
 app.use(express.json())
 app.use("/items", itemsRouter);
 app.use("/orders",tokenChecker,ordersRouter);
-app.use("/bakers", bakersRouter);
+app.use("/bakers",tokenChecker,bakersRouter);
 app.use("/users", usersRouter);
 app.use("/tokens", tokensRouter);
 

@@ -48,9 +48,6 @@ const OrdersController = {
         const token = await TokenGenerator.jsonwebtoken(req.user_id);
         res.status(201).json({ message: "OK", orders: orders, token: token});
       })
-      
-      // const allOrders = await Order.find()
-      // res.status(201).json({Order: allOrders, token: token});
     }
   )},
   updateOrder: async(req, res) => {

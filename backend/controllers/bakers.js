@@ -1,71 +1,63 @@
-const { restart } = require("nodemon");
 const Baker = require("../models/baker");
+const jwt = require("jsonwebtoken");
+const User = require("../models/user");
+const TokenGenerator = require("../models/token_generator");
 
 const BakersController = {
-  getAll: (req, res, next) => {
-    // console.log("GET CONFIRMED ORDERS")
-    try {
-      Baker.find((err, orders) => {
-        if (err) throw err;
-        console.log("Confirmed Orders:", orders)
-        res.status(200).json({ confirmedOrder:  orders });
-      });
-    } catch (err) {
-      console.error("Error retrieving confirmed orders", err);
-      res.status(500).json({message: "Error retrieving confirmed orders"})
-    }
+  getAll: (req, res) => {
+    Baker.find({userId: req.user_id})
+    .exec((err, bakers) => {
+      const token = TokenGenerator.jsonwebtoken(req.user_id);
+      if(err) return res.status(400).send(err);
+      res.status(200).json({ bakers: bakers, token: token });
+    })
+  },
+  getBakerByOrderId: (req, res) => {
+    Baker.find({orderId: req.params.orderId})
+    .exec((err, bakers) => {
+      const token = TokenGenerator.jsonwebtoken(req.user_id);
+      if(err) return res.status(400).send(err);
+      res.status(200).json({ bakers: bakers, token: token });
+    })
   },
 
-  getBakerById: (req, res, next) => {
-    try {
-      const baker = Baker.findById(req.params.id);
-      if (baker == null) {
-        return res.status(404).json({ message: "Cannot find order" });
-      }
-      res.baker = baker;
-      next();
-    } catch (err) {
-      return res.status(500).json({ message: err.message });
-    }
-  },
-
-  // createBaker: (req, res) => {
-  //   console.log("POST Baker")
-  //   const baker = new Baker(req.body);
-  //   console.log("NEW Baker: ", baker)
-  //   baker.save(async (err) => {
-  //     if (err) {
-  //       throw err;
-  //     }
-  //     const allBakers = await Baker.find()
-  //     res.status(201).json({bakers: allBakers});
-  //   }
-  // )},
-  // createBaker: async (req, res) => {
-  //   console.log("POST Baker");
-  //   const baker = new Baker(req.body);
-  //   console.log("NEW Baker: ", baker);
+  // getBakerById: (req, res, next) => {
   //   try {
-  //     await baker.save();
-  //     const allBakers = await Baker.find();
-  //     res.status(201).json({ confirmedOrder: allBakers });
-  //   } catch (error) {
-  //     res.status(500).json({ error: error.message });
+  //     const baker = Baker.findById(req.params.id);
+  //     if (baker == null) {
+  //       return res.status(404).json({ message: "Cannot find order" });
+  //     }
+  //     res.baker = baker;
+  //     next();
+  //   } catch (err) {
+  //     return res.status(500).json({ message: err.message });
   //   }
-  // }
+  // },
+
+
 
   createBaker: (req, res) => {
-    console.log("POST Baker")
-    const baker = new Baker(req.body);
-    console.log("NEW Baker: ", baker)
+    User.find({_id: req.user_id }, function (err, docs)
+    {
+      if (err) {
+        throw err;
+      }
+    })
+    const baker = new Baker({userId: req.user_id, orderId: req.body.orderId, confirmedOrder: req.body.confirmedOrder});
     baker.save(async (err) => {
       if (err) {
         throw err;
       }
-      const allBakers = await Baker.find()
-      res.status(201).json({Baker: allBakers});
+      Baker.find(async (err, bakers) => {
+        if (err){
+          throw err;
+        }
+        const token = await TokenGenerator.jsonwebtoken(req.user_id);
+        res.status(201).json({ message: "OK", bakers: bakers, token: token});
+      })
     }
-  )},
+  )
+  },
 }
 
 module.exports = BakersController
