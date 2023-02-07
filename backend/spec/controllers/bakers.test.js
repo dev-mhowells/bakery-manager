@@ -94,7 +94,7 @@ describe("BakersController", () => {
 
   });
 
-  describe('POST /baker', () => {
+  describe('Create Baker', () => {
     let baker;
 
     beforeEach(() => {
