@@ -1,5 +1,10 @@
 const Baker = require("../../models/baker");
 const BakersController = require("../../controllers/bakers")
+const app = require("../../index");
+const express = require("express");
+const request = require("supertest");
+const mongoose = require("mongoose");
+// const bakersRouter = require("./routes/bakers");
 
 describe("BakersController", () => {
   describe('getAll', () => {
@@ -89,6 +94,32 @@ describe("BakersController", () => {
       expect(mockRes.status).toHaveBeenCalledWith(500);
       expect(mockRes.status().json).toHaveBeenCalledWith({ message: 'Error finding order' });
     });
+  });
 
+  describe('Create Baker', () => {
+
+    // beforeEach(() => {
+    //  let baker = {
+    //     confirmedOrder: 'Company A',
+    //     orderId: ['123']
+    //   };
+    // });
+
+    // afterEach(async () => {
+    //   await Baker.deleteMany({});
+    // });
+
+    it('creates a baker and returns all bakers', async () => {
+      const res = await request(app)
+        .post('/bakers')
+        .send({confirmedOrder: "Company A", orderId: ['123'] });
+
+      expect(res.statusCode).toEqual(201);
+      expect(res.body.bakers).toHaveLength(1);
+      expect(res.body.bakers[0]).toHaveProperty('confirmedOrder', 'Company A');
+      expect(res.body.bakers[0]).toHaveProperty('orderId', ['123']);
+    },20000);
   });
 });
+
+
