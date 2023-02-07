@@ -1,5 +1,7 @@
 const Baker = require("../../models/baker");
 const BakersController = require("../../controllers/bakers")
+const app = require("../../index");
+const request = require("supertest");
 
 describe("BakersController", () => {
   describe('getAll', () => {
@@ -90,5 +92,31 @@ describe("BakersController", () => {
       expect(mockRes.status().json).toHaveBeenCalledWith({ message: 'Error finding order' });
     });
 
+  });
+
+  describe('POST /baker', () => {
+    let baker;
+
+    beforeEach(() => {
+      baker = {
+        confirmedOrder: 'Company A',
+        orderId: ['123']
+      };
+    });
+
+    afterEach(async () => {
+      await Baker.deleteMany({});
+    });
+
+    it('creates a baker and returns all bakers', async () => {
+      const res = await request(app)
+        .post('/')
+        .send(baker);
+
+      expect(res.statusCode).toEqual(201);
+      expect(res.body.bakers).toHaveLength(1);
+      expect(res.body.bakers[0]).toHaveProperty('confirmedOrder', 'Company A');
+      expect(res.body.bakers[0]).toHaveProperty('orderId', ['123']);
+    },20000);
   });
 });

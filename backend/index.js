@@ -13,7 +13,8 @@ const app = express();
 
 // Set up mongoose connection
 mongoose.set('strictQuery', false);
-const mongoDB = `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.ds0ycgm.mongodb.net/${process.env.DATABASE}?retryWrites=true&w=majority`;
+const mongoDB = `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.ds0ycgm.mongodb.net/${process.env.DATABASE}?retryWrites=true&w=majority&socketTimeoutMS=120000`;
+;
 
 // middleware function to check for valid tokens
 const tokenChecker = (req, res, next) => {

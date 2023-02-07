@@ -29,18 +29,19 @@ const BakersController = {
     }
   },
 
-  createBaker: (req, res) => {
-    console.log("POST Baker")
-    const baker = new Baker(req.body);
-    console.log("NEW Baker: ", baker)
-    baker.save(async (err) => {
-      if (err) {
-        throw err;
-      }
-      const allBakers = await Baker.find()
-      res.status(201).json({bakers: allBakers});
-    }
-  )},
+ createBaker: async (req, res) => {
+  console.log("POST Baker");
+  const baker = new Baker(req.body);
+  console.log("NEW Baker: ", baker);
+  try {
+    await baker.save();
+    const allBakers = await Baker.find();
+    res.status(201).json({ confirmedOrder: confirmedOrder });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
 }
 
 module.exports = BakersController
