@@ -41,18 +41,31 @@ const BakersController = {
   //     res.status(201).json({bakers: allBakers});
   //   }
   // )},
-  createBaker: async (req, res) => {
-    console.log("POST Baker");
+  // createBaker: async (req, res) => {
+  //   console.log("POST Baker");
+  //   const baker = new Baker(req.body);
+  //   console.log("NEW Baker: ", baker);
+  //   try {
+  //     await baker.save();
+  //     const allBakers = await Baker.find();
+  //     res.status(201).json({ confirmedOrder: allBakers });
+  //   } catch (error) {
+  //     res.status(500).json({ error: error.message });
+  //   }
+  // }
+
+  createBaker: (req, res) => {
+    console.log("POST Baker")
     const baker = new Baker(req.body);
-    console.log("NEW Baker: ", baker);
-    try {
-      await baker.save();
-      const allBakers = await Baker.find();
-      res.status(201).json({ confirmedOrder: confirmedOrder });
-    } catch (error) {
-      res.status(500).json({ error: error.message });
+    console.log("NEW Baker: ", baker)
+    baker.save(async (err) => {
+      if (err) {
+        throw err;
+      }
+      const allBakers = await Baker.find()
+      res.status(201).json({Baker: allBakers});
     }
-  }
+  )},
 }
 
 module.exports = BakersController

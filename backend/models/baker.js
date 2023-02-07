@@ -3,10 +3,7 @@ const Schema = mongoose.Schema;
 
 const BakerSchema = new Schema({
   confirmedOrder: {type: Array},
-  orderId: {
-    type: Schema.Types.ObjectId,
-    ref: 'Order',
-  },
+  orderId: String,
 });
 
 // Export model

@@ -5,6 +5,6 @@ const BakersController = require("../controllers/bakers");
 
 router.get("/", BakersController.getAll);
 router.get("/:id", BakersController.getBakerById);
-router.post("/baker", BakersController.createBaker);
+router.post("/", BakersController.createBaker);
 
 module.exports = router;
