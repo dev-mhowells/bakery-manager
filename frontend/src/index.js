@@ -1,4 +1,5 @@
-import React from 'react';
+// import {React} from 'react';
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom/client';
 import './styles.css';
 import App from './App';
@@ -8,13 +9,31 @@ import {
   RouterProvider
 } from 'react-router-dom'
 import OrderForm from './orderForm';
-// import { Navigate } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import LogInForm from './login';
 import Login from './login';
 import Profile from './profile';
 import BakeryIndex from './bakeryIndex';
 import Orders from './orders';
+
+function redirectByRole() {
+const [userRole, setUserRole] = useState("user");
+
+const AddItemPageg = () => {
+  if (userRole !== "admin") {
+    return <Redirect to="/" />;
+  }
+  return <AddItem />;
+};
+
+const BakerIndexPage = () => {
+  if (userRole !== "admin") {
+    return <Redirect to="/" />;
+  }
+  return <BakeryIndex />;
+};
+}
 
 const router = createBrowserRouter([
   {
