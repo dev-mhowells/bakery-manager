@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles.css';
 import App from './App';
@@ -60,9 +60,32 @@ const router = createBrowserRouter([
   },
 ])
 
+const Root = () => {
+  const [userRole, setUserRole] = useState(null);
+
+  useEffect(() => {
+    // Make an API call to the server to retrieve the user's role
+    fetch('/api/user/type')
+      .then(res => res.json())
+      .then(res => setUserRole(res.role))
+      .catch(err => console.error(err));
+  }, []);
+
+  return (
+    <React.StrictMode>
+      <RouterProvider router={router} />
+      {userRole === 'admin' && <AddItem />}
+      {userRole === 'customer' && <OrderForm />}
+    </React.StrictMode>
+  );
+};
+
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <React.StrictMode>
+//     <RouterProvider router={router} />
+//   </React.StrictMode>
+// );
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
+root.render(<Root />);
