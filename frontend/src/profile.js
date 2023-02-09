@@ -45,7 +45,7 @@ export default function Profile() {
                         </div>
                     </div>
                         </div >
-                        <label htmlFor="my-modal" className="btn text-bone bg-beige" onClick={ClearLocalStorage()}><a href="/login">Logout</a></label>
+                        <label htmlFor="my-modal" className="btn text-bone bg-beige" onClick={() => ClearLocalStorage()}><a href="/login">Logout</a></label>
 {/* text box bio */}
                 <div className="fixed mt-40 top-80 right-80 w-96 h-40 border-solid border-5 border-green mb-10 form-control">        
                     <textarea className="textarea textarea-bordered textarea-xl border-darkgreen" placeholder="Bio"></textarea>

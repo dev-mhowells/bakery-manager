@@ -209,7 +209,7 @@ export default function AddItem() {
                         </label>
                         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black">
                             <li>
-                                <a href="/" class="justify-between">Store front</a>
+                                <a href="/bakeryIndex" class="justify-between">Dashboard</a>
                             </li>
                         </ul>
                     </div>
