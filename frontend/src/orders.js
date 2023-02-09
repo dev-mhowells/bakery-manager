@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import BatchOrder from '../Basket/batchOrder'
+import BatchOrder from './batchOrder'
 
 
 export default function Orders(props) {

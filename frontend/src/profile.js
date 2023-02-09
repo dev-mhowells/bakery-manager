@@ -1,9 +1,8 @@
 import React from 'react';
 import ClearLocalStorage from './logout';
-import { Link} from 'react-router-dom'
 
 export default function Profile() {
-
+    
     return (
         <body>
             <div className='flex'>
@@ -35,7 +34,18 @@ export default function Profile() {
                         </div>
                     </div>
                 </div>
-                <Link to="/login"><label htmlFor="my-modal" className="btn text-bone bg-beige btn-block" onClick={ClearLocalStorage()}>Logout</label></Link>
+                <label htmlFor="my-modal" className="btn text-bone bg-beige"><a href="/">Home page</a></label>
+                <input type="checkbox" id="my-modal" className="modal-toggle" />
+                <div className="modal">
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg">Pull in invoices</h3>
+                        <p className="py-4">from some sort of array we make maybe send straight from order form</p>
+                        <div className="modal-action">
+                            <label htmlFor="my-modal" className="btn bg-beige">Close</label>
+                        </div>
+                    </div>
+                        </div >
+                        <label htmlFor="my-modal" className="btn text-bone bg-beige" onClick={ClearLocalStorage()}><a href="/login">Logout</a></label>
 {/* text box bio */}
                 <div className="fixed mt-40 top-80 right-80 w-96 h-40 border-solid border-5 border-green mb-10 form-control">        
                     <textarea className="textarea textarea-bordered textarea-xl border-darkgreen" placeholder="Bio"></textarea>

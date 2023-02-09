@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 // NEED THIS:
-import { storage } from "../firebaseConfig";
+import storage from "./firebaseConfig";
 
 export default function AddItem() {
 

@@ -1,9 +1,8 @@
 import './styles.css';
 import React from 'react';
 import { useState, useEffect } from 'react';
-import Item from './Items/Item';
 import { useNavigate } from "react-router-dom";
-
+import Item from './Item';
 import Basket from './Basket/Basket';
 
 function App() {
