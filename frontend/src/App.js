@@ -1,7 +1,7 @@
 import './styles.css';
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Item from './Item';
 import Basket from './Basket/Basket';
 
@@ -54,7 +54,7 @@ function App() {
           About us!
         </div>
       <div class="collapse-content"> 
-          <p>Here's the link to our <a href="https://github.com/dev-mhowells/bakery-manager">github </a>page</p>
+          <p>Here's the link to our <Link for="https://github.com/dev-mhowells/bakery-manager">github </Link>page</p>
         </div>
       </div>
       <div class="divider"></div> 

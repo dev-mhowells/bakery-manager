@@ -1,6 +1,7 @@
 import './styles.css';
 import React from 'react';
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 
 const Confirmation = () => {
   
@@ -74,13 +75,10 @@ return (
             </div>
           </label>
         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black">
-          <li>
-            <a href="/profile" class="justify-between">
+            <Link for="/profile">
               Profile
-              <span class="badge">Check it out!</span>
-            </a>
-          </li>
-          <li><a href="/login">Logout</a></li>
+              <span class="badge">Check it out!</span></Link>
+          <Link for="/login">Logout</Link>
         </ul>
   </div>
 </div>

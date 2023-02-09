@@ -2,6 +2,7 @@ import React from 'react';
 import CalendarTable from './calendar';
 import Orders from './orders';
 import ClearLocalStorage from './logout';
+import { Link } from "react-router-dom";
 
 export default function BakeryIndex() {
 
@@ -30,10 +31,10 @@ export default function BakeryIndex() {
                 </div>
     {/* cards that contain 3 elements */}
                     <div className="fixed mt-40 top-80 left-80 right-30 card-body bg-darkgreen card shadow-xl w-96">
-                        <button class="btn bg-beige text-bone btn-block"><a href='/addItem'>Add more items</a></button>
+                    <Link for="/addItem"><button class="btn bg-beige text-bone btn-block">Add more items</button></Link>
                             <label for="my-modal-3" class="btn bg-beige text-bone btn-block">Upcoming orders</label>
-                            <label htmlFor="my-modal" className="btn text-bone bg-beige"><a href="/">Home page</a></label>
-                            <label htmlFor="my-modal" className="btn text-bone bg-beige" onClick={ClearLocalStorage()}><a href="/login">Logout</a></label>
+                            <Link for="/"><label htmlFor="my-modal" className="btn text-bone bg-beige btn-block">Home page</label></Link>
+                            <Link for="/login"><label htmlFor="my-modal" className="btn text-bone bg-beige btn-block" onClick={ClearLocalStorage()}>Logout</label></Link>
     {/* calendar */}
                                 <div className="fixed mt-60 top-60 right-80 w-96 h-96 border-solid border-5 border-green mb-10"> 
                                 <CalendarTable></CalendarTable>
