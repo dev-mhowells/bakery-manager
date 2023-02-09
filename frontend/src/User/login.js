@@ -94,7 +94,7 @@ export default function LogInForm({}) {
 														transition
 														duration-150
 														ease-in-out mb-5"
-													onSubmit={handleSubmit} >Login</button>
+													onSubmit={handleSubmit}>Login</button>
 												</div>
 											</form>
 											<Link to='/signup'><b class='text-blue underline'>Don't have an account yet? Sign up here</b></Link>
