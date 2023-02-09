@@ -3,7 +3,7 @@ import ClearLocalStorage from './logout';
 import { Link } from "react-router-dom";
 
 export default function Profile() {
-    
+
     return (
         <body>
             <div className='flex'>
@@ -43,7 +43,7 @@ export default function Profile() {
                         </div>
                     </div>
                         </div >
-                        <Link for="/login"><label htmlFor="my-modal" className="btn text-bone btn-block bg-beige" onClick={() => ClearLocalStorage()}>Logout</label></Link>
+                        <Link for='/login'><b htmlFor="my-modal" className="btn text-bone btn-block bg-beige" onClick={() => ClearLocalStorage()}>Logout</b></Link>
 {/* text box bio */}
                 <div className="fixed mt-40 top-80 right-80 w-96 h-40 border-solid border-5 border-green mb-10 form-control">        
                     <textarea className="textarea textarea-bordered textarea-xl border-darkgreen" placeholder="Bio"></textarea>

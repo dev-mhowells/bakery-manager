@@ -54,7 +54,7 @@ function App() {
           About us!
         </div>
       <div class="collapse-content"> 
-          <p>Here's the link to our <Link for="https://github.com/dev-mhowells/bakery-manager">github </Link>page</p>
+          <p>Here's the link to our <Link for='https://github.com/dev-mhowells/bakery-manager'><b class='text-blue underline'>github</b></Link>page</p>
         </div>
       </div>
       <div class="divider"></div> 
